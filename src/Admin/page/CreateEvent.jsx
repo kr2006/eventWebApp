@@ -14,15 +14,15 @@ const CreateEvent = () => {
   const navigate = useNavigate();
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => { 
+  const onSubmit = data => {
     data.startAt = data.start + " " + data.startAt;
-    console.log(data.startAt);                      
-    data.startAt = moment(data.startAt).format(); 
+    console.log(data.startAt);
+    data.startAt = moment(data.startAt).format();
     axios.post('https://localhost:44390/api/Event/', data);
-    navigate("/admin");
+    navigate("/admin/events");
   };
 
-  console.log(watch("example")); 
+  console.log(watch("example"));
 
 
   return (
@@ -100,7 +100,7 @@ const CreateEvent = () => {
               sx={{
                 width: '100%'
               }}
-              />
+            />
           </FormControl>
           <FormControl fullWidth>
             <TextField

@@ -6,6 +6,7 @@ import { Box, Container, Typography } from '@material-ui/core';
 
 import AddIcon from '@material-ui/icons/Add';
 import SettingsIcon from '@material-ui/icons/Settings';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 import SearchEvent from '../../Events/components/SearchEvent';
 import AdminEvents from '../components/AdminEvents';
@@ -50,11 +51,11 @@ const AdminPanel = () => {
                                 flexWrap: 'wrap',
                             }}>
                                 <AddIcon />
-                                <Typography>Створити подію</Typography>
+                                <Typography>Створити подію </Typography>
                             </Box>
                         </NavLink>
                     </Box>
-                    <Box>
+                    <Box sx={{ marginBottom: '20px' }}>
                         <NavLink className="wide-btn" to='/categories/'>
                             <Box style={{
                                 display: 'flex',
@@ -68,6 +69,21 @@ const AdminPanel = () => {
                         </NavLink>
 
                     </Box>
+                    <Box>
+                        <NavLink className="wide-btn" to='/admin/register'>
+                            <Box style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                flexWrap: 'wrap',
+                            }}>
+                                <SupervisorAccountIcon />
+                                <Typography>Додати адміністатора</Typography>
+                            </Box>
+                        </NavLink>
+
+                    </Box>
+
 
                 </Container>
             </Box>

@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthContext from '../../context/AuthContext';
 import { useForm } from "react-hook-form";
 
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
-import { FormControl, TextField, Button, Input } from '@material-ui/core';
-
-
+import { FormControl, TextField } from '@material-ui/core';
 
 const AdminLogin = () => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { loginUser } = useContext(AuthContext);
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = (data) => {
+        loginUser(data);
+    }
 
     return (
         <Box p={12}>
@@ -19,10 +23,10 @@ const AdminLogin = () => {
                     <FormControl fullWidth>
                         <TextField
                             variant="outlined"
-                            label="login"
+                            label="Email"
                             margin="normal"
                             defaultValue=""
-                            {...register("login", { required: true })}
+                            {...register("Email", { required: true })}
                             sx={{
                                 width: '100%'
                             }}
@@ -31,11 +35,11 @@ const AdminLogin = () => {
                     <FormControl fullWidth>
                         <TextField
                             variant="outlined"
-                            label="password"
+                            label="Password"
                             type="password"
                             margin="normal"
                             defaultValue=""
-                            {...register("password", { required: true })}
+                            {...register("Password", { required: true })}
                             sx={{
                                 width: '100%'
                             }}
