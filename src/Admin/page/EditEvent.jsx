@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
@@ -7,10 +7,13 @@ import moment from 'moment';
 
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
-import { FormControl, TextField, Button, Checkbox, FormControlLabel } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import { FormControl, TextField, Button } from '@material-ui/core';
+import AuthContext from '../../context/AuthContext';
 
 const EditEvent = (props) => {
     const { id } = useParams();
+    const { token } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -22,15 +25,18 @@ const EditEvent = (props) => {
 
 
     const [data, setData] = useState();
+    const [categories, setCategories] = useState();
+    var [categoryIds, setCategoriesIds] = useState([]);
+
+    const addCategoryId = (id) => {
+        categoryIds.includes(id) ? setCategoriesIds(categoryIds = categoryIds.filter(c => c !== id)) : setCategoriesIds(categoryIds = categoryIds.concat(id));
+        console.log(categoryIds);
+    };
 
     useEffect(() => {
         const url = 'https://localhost:44390/api/Event/' + id;
         const result = axios.get(url).then((response) => {
-            console.log(response);
-            //var date = moment(response.data.startAt).format('YYYY-MM-DD');
-            //var time = moment(response.data.startAt).format('hh:mm');
-            console.log(moment(response.data.startAt).format('YYYY-MM-DD'));
-            console.log(response.data.startAt);
+            setData(response.data[0]);
 
             setValue("title", response.data[0].title);
             setValue("shortDesc", response.data[0].shortDesc);
@@ -40,18 +46,32 @@ const EditEvent = (props) => {
             setValue("startAt", moment(response.data[0].startAt).format('hh:mm'));
             setValue("price", response.data[0].price);
             setValue("location", response.data[0].location);
-            setValue("category", false);
         });
 
     }, []);
+
+    useEffect(() => {
+        const eventCategories = data?.eventCategories;
+            eventCategories?.forEach(item => categoryIds.push(item.categoryId));
+            console.log(categoryIds);
+            console.log("hahahahah");
+        const categories = axios.get('https://localhost:44390/api/Category').then((response) => {
+            setCategories(response.data);
+        })
+    }, [data])
 
     const onSubmit = (formData) => {
         console.log(formData);
         var date = formData.start + " " + formData.startAt;
         formData.startAt = moment(date).toDate();
         console.log(formData.startAt);
+        formData.CategoryIds = categoryIds;
         const url = 'https://localhost:44390/api/Event/' + id;
-        const result = axios.put(url, formData).then((result) => {
+        const result = axios.put(url, formData, {
+            headers: {
+                Authorization: 'Bearer ' + Object.values({ token })[0]
+            }
+        }).then((result) => {
             console.log(result);
             navigate(`/event/details/${id}`);
         });
@@ -160,13 +180,40 @@ const EditEvent = (props) => {
                     </FormControl>
 
                     {errors.exampleRequired && <span>This field is required</span>}
+                    <Box sx={{ margin: '30px 0px 10px' }}>
+                        Категорії:
+                    </Box>
+
+                    <Box sx={{ marginLeft: '-10px' }}>
+                        <Grid container>
+                            {categories?.map((c) => (
+                                <Grid item>
+                                    <Box sx={{ margin: "8px" }}>
+                                        <Button
+                                            variant='outlined'
+                                            color='primary'
+                                            className={categoryIds.includes(c.categoryId) ? "category-btn active" : "category-btn"}
+                                            onClick={() => {
+                                                addCategoryId(c.categoryId)
+                                            }}
+                                        >
+                                            {c.categoryName}
+                                        </Button>
+                                    </Box>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+
                     <Box sx={{
                         textAlign: 'center',
-                        marginTop: '20px'
+                        marginTop: '40px'
                     }}>
                         <Button type="submit" variant='outlined' color='primary'>Зберегти зміни</Button>
                     </Box>
                 </form>
+
+
             </Container>
         </Box>
     )

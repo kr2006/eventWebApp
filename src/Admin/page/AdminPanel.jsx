@@ -29,7 +29,7 @@ const AdminPanel = () => {
         const result = axios.get('https://localhost:44390/api/Event/').then((result) => {
             setData(result.data.reverse());
         });
-    }, []);
+    }, [data]);
 
     //get current event
     const indexOfLastEvent = currentPage * eventsPerPage;

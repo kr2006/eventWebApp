@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { useForm } from "react-hook-form";
 
@@ -10,40 +10,108 @@ const AdminRegister = () => {
 
     const { registerUser } = useContext(AuthContext);
 
-    const { register, errors, handleSubmit, watch } = useForm({});
-    const password = useRef({});
-    password.current = watch("password", "");
+
+    const { register, handleSubmit, formState: { errors }, reset, watch } = useForm({
+        mode: "onTouched"
+    });
+
+    const password = watch("password");
 
     const onSubmit = (data) => {
-        registerUser(data);
+        registerUser({
+            "FirstName": data.firstName,
+            "LastName": data.lastName,
+            "Email": data.email,
+            "Password": data.password,
+            "roles": ["Admin"]
+        });
     }
 
+
     return (
-        <form onSubmit={e => e.preventDefault()}>
-            <label>Password</label>
-            <input
-                name="password"
-                type="password"
-                ref={register("password", {
-                    required: "You must specify a password",
-                    minLength: {
-                        value: 8,
-                        message: "Password must have at least 8 characters"
-                    }
-                })}
-            />
-            {errors.password && <p>{errors.password.message}</p>}
+        <Box p={12}>
+            <Container maxWidth='md'>
+                <form onSubmit={handleSubmit(onSubmit)} className="admin-form">
+                    <FormControl fullWidth>
+                        <TextField
+                            variant="outlined"
+                            label="Ім'я"
+                            margin="normal"
+                            defaultValue=""
+                            {...register("firstName", { required: true })}
+                            sx={{
+                                width: '100%'
+                            }}
+                        />
+                    </FormControl>
+                    <FormControl fullWidth>
+                        <TextField
+                            variant="outlined"
+                            label="Прізвище"
+                            margin="normal"
+                            defaultValue=""
+                            {...register("lastName", { required: true })}
+                            sx={{
+                                width: '100%'
+                            }}
+                        />
+                    </FormControl>
 
-            <label>Repeat password</label>
-            <input type="text" name="newPassword" ref={register({
-                validate: (value) => value === watch('password')
-            })} placeholder="Новый пароль" required />
+                    <FormControl fullWidth>
+                        <TextField
+                            variant="outlined"
+                            label="Email"
+                            margin="normal"
+                            defaultValue=""
+                            {...register("email", { required: true })}
+                            sx={{
+                                width: '100%'
+                            }}
+                        />
+                    </FormControl>
+                    <FormControl fullWidth>
+                        <TextField
+                            variant="outlined"
+                            label="Пароль"
+                            type="password"
+                            margin="normal"
+                            defaultValue=""
+                            {...register("password", {
+                                required: true
+                            })}
+                            sx={{
+                                width: '100%'
+                            }}
+                        />
+                    </FormControl>
+                    <FormControl fullWidth>
+                        <TextField
+                            variant="outlined"
+                            label="Повторити пароль"
+                            type="password"
+                            margin="normal"
+                            defaultValue=""
+                            {...register("confirm_password", {
+                                required: true,
+                                validate: (val) => {
+                                    if (watch('password') != val) {
+                                        return "Your passwords do no match";
+                                    }
+                                },
+                            })}
+                            sx={{
+                                width: '100%'
+                            }}
+                        />
+                    </FormControl>
+                    <p className='alerts'>{errors.confirm_password?.message}</p>
 
-            {/* {errors.password_repeat && <p>{errors.password_repeat.message}</p>} */}
+                    <input className="input-submit" type="submit" value="Додати користувача" />
+                </form>
 
-            <input type="submit" onClick={handleSubmit(onSubmit)} />
-        </form>
-    );
+            </Container>
+        </Box>
+    )
 
 }
 

@@ -12,8 +12,6 @@ export const AuthProvider = ({ children }) => {
     const [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null);
     const [loading, setLoading] = useState(true);
 
-    console.log(authTokens);
-
     const loginUser = async (data) => {
         let response = await axios.post('https://localhost:44390/api/Account/Login', data).then((response) => {
             console.log(response)
@@ -30,9 +28,14 @@ export const AuthProvider = ({ children }) => {
 
     const registerUser = async (data) => {
         console.log(data);
-        // let response = await axios.post('https://localhost:44390/api/Account/Register', data).then((response) => {
-        //     console.log(response)
-        // })
+        let response = await axios.post('https://localhost:44390/api/Account/Register', data, {
+            headers: {
+                Authorization: 'Bearer ' + authTokens.token
+            }
+        }
+        ).then((response) => {
+            console.log(response);
+        })
     }
 
     const logoutUser = () => {
@@ -71,6 +74,7 @@ export const AuthProvider = ({ children }) => {
 
     const contextData = {
         tokens: authTokens,
+        token: authTokens?.token,
         loginUser: loginUser,
         logoutUser: logoutUser,
         registerUser: registerUser

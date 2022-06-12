@@ -1,8 +1,8 @@
-.sc-iCfMLu.gZZBOx.rec.rec-pagination{
+.sc-iCfMLu.gZZBOx.rec.rec-pagination {
   display: none;
 }
 
-button.TabUnstyled-root{
+button.TabUnstyled-root {
   border: 1px solid #fff;
   padding: 10px 20px;
   font-size: 18px;
@@ -13,74 +13,74 @@ button.TabUnstyled-root{
   background-color: transparent;
 }
 
-button.TabUnstyled-root.Mui-selected{
+button.TabUnstyled-root.Mui-selected {
   color: #000;
   background-color: #fff;
 }
 
-.TabsListUnstyled-root.TabsListUnstyled-horizontal{
+.TabsListUnstyled-root.TabsListUnstyled-horizontal {
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
 }
 
-.TabPanelUnstyled-root{
+.TabPanelUnstyled-root {
   color: #fff
 }
 
-.sc-eCImPb.jMNKZk.rec.rec-carousel{
+.sc-eCImPb.jMNKZk.rec.rec-carousel {
   position: relative;
 }
 
-.sc-eCImPb.jMNKZk.rec.rec-carousel .MuiButtonBase-root{
+.sc-eCImPb.jMNKZk.rec.rec-carousel .MuiButtonBase-root {
   position: absolute;
-    bottom: 0;
-    right: 0;
+  bottom: 0;
+  right: 0;
 }
 
-.sc-eCImPb.jMNKZk.rec.rec-carousel > button{
+.sc-eCImPb.jMNKZk.rec.rec-carousel>button {
   left: -130px;
 }
 
-.sc-dkPtRN.fPDpuU.rec.rec-slider-container + button{
+.sc-dkPtRN.fPDpuU.rec.rec-slider-container+button {
   left: 130px;
 }
 
-.sc-dkPtRN.fPDpuU.rec.rec-slider-container{
+.sc-dkPtRN.fPDpuU.rec.rec-slider-container {
   margin: 0 0;
 }
 
-.filter-event-by-date .sc-eCImPb.jMNKZk.rec.rec-carousel .MuiButtonBase-root{
+.filter-event-by-date .sc-eCImPb.jMNKZk.rec.rec-carousel .MuiButtonBase-root {
   top: 160px;
   color: #fff;
 }
 
-.be-notificated-parent{
+.be-notificated-parent {
   position: relative;
 }
 
-.be-notificated-child{
+.be-notificated-child {
   position: absolute;
 }
 
-a{
+a {
   color: #000;
   text-decoration: none;
   font-weight: 400;
 }
 
-.pagination-btn{
+.pagination-btn {
   padding: 12px 20px;
   margin-right: 15px;
   border: 1px solid #000;
 }
 
-.pagination-btn.active{
+.pagination-btn.active {
   background-color: #000;
   color: #fff;
 }
 
-.wide-btn{
+.wide-btn {
   color: #fff;
   background-color: #000;
   display: block;
@@ -92,14 +92,14 @@ a{
   -webkit-box-sizing: border-box;
 }
 
-.wide-btn:hover{
+.wide-btn:hover {
   color: #000;
   background-color: #fff;
-  box-shadow:0px 0px 0px 1px black inset;
+  box-shadow: 0px 0px 0px 1px black inset;
   transition: 0.3s;
 }
 
-.btn-add-category{
+.btn-add-category {
   display: block !important;
   max-width: 600px !important;
   width: 100% !important;
@@ -112,29 +112,29 @@ a{
   text-transform: none !important;
 }
 
-.btn-add-category:hover{
+.btn-add-category:hover {
   color: #000 !important;
   background-color: #fff !important;
 }
 
-.form-create{
+.form-create {
   width: 100%;
   margin: 0 auto;
 }
 
-.form-create input{
+.form-create input {
   width: 100%;
   display: block;
 }
 
-button{
+button {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-family: 'Aeroport';  
+  font-family: 'Aeroport';
 }
 
-.input-submit{
+.input-submit {
   background-color: black;
   padding: 10px 45px;
   color: #fff;
@@ -147,13 +147,30 @@ button{
   font-size: 20px;
 }
 
-.input-submit:hover{
+.input-submit:hover {
   background-color: #fff;
   transition: 0.3s;
   color: #000;
 }
 
-.admin-form{
+.admin-form {
   max-width: 400px;
   margin: 0 auto;
 }
+
+.MuiButton-root.category-btn {
+  text-transform: none;
+}
+
+.MuiButton-root.category-btn.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.MuiButton-root.simple-btn {
+  border: none;
+  padding: none;
+  font-size: 25px;
+  font-weight: 900;
+}
+

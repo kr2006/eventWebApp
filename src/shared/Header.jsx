@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 //MUI imports
@@ -12,8 +13,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import NotificationsActiveOutlinedIcon from '@material-ui/icons/NotificationsActiveOutlined';
-
 import Logo from '../img/logo.png';
 import { Typography } from '@material-ui/core';
 
@@ -32,6 +33,7 @@ const Header = () => {
         setIsOpen(!isOpen);
     }
 
+    const navigate = useNavigate();
 
     return (
         <Box p={2}>
@@ -63,12 +65,7 @@ const Header = () => {
                         </Box>
                     </Grid>
                     <Grid item>
-                        <Button
-                            onClick={handleDateMenu}
-                            id="fade-button"
-                            aria-controls={isOpen ? 'fade-menu' : undefined}
-                            aria-haspopup="true"
-                            aria-expanded={isOpen ? 'true' : undefined}
+                        {/* <Button
                         >
                             <CalendarTodayIcon />
                         </Button>
@@ -84,10 +81,15 @@ const Header = () => {
                             <MenuItem onClick={handleDateMenu}>ЗАВТРА</MenuItem>
                             <MenuItem onClick={handleDateMenu}>ЦЬОГО ТИЖНЯ</MenuItem>
                             <MenuItem onClick={handleDateMenu}>ЦИХ ВИХІДНИХ</MenuItem>
-                        </Menu>
+                        </Menu> */}
                         <Button>
                             <NotificationsActiveOutlinedIcon />
                         </Button>
+                        {tokens ? (
+                            <Button onClick={() => { navigate("/admin") }}>
+                                <AccountCircleIcon />
+                            </Button>
+                        ) : <div></div>}
                         {tokens ? (
                             <Button onClick={logoutUser}>
                                 <ExitToAppIcon />

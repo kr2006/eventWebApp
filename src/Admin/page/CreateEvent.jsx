@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -7,29 +7,44 @@ import moment from 'moment';
 import AddIcon from '@material-ui/icons/Add';
 import { Button, FormControl, TextField } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
 
 const CreateEvent = () => {
+
+  const [categories, setCategories] = useState();
+
+  var [categoryIds, setCategoriesIds] = useState([]);
+
+  const addCategoryId = (id) => {
+    categoryIds.includes(id) ? setCategoriesIds(categoryIds = categoryIds.filter(c => c !== id)) : setCategoriesIds(categoryIds = categoryIds.concat(id));
+    console.log(categoryIds);
+  };
+
   const navigate = useNavigate();
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
   const onSubmit = data => {
     data.startAt = data.start + " " + data.startAt;
-    console.log(data.startAt);
     data.startAt = moment(data.startAt).format();
-    axios.post('https://localhost:44390/api/Event/', data);
-    navigate("/admin/events");
+    data.CategoryIds = categoryIds;
+    axios.post('https://localhost:44390/api/Event/CreateWithCategories', data);
+    navigate("/admin");
   };
 
-  console.log(watch("example"));
-
+  useEffect(() => {
+    const categories = axios.get('https://localhost:44390/api/Category').then((response) => {
+      setCategories(response.data);
+      console.log(response.data)
+    })
+  }, [])
 
   return (
-    <Box p={12}>
+    <Box p={12} >
       <Container maxWidth='md'>
         <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
-          {/* register your input into the hook by invoking the "register" function */}
           <FormControl fullWidth>
             <TextField
               variant="outlined"
@@ -127,16 +142,33 @@ const CreateEvent = () => {
               }}
             />
           </FormControl>
+          <Box sx={{ margin: '30px 0px 10px' }}>
+            Оберіть категорії:
+          </Box>
+
+          <Box sx={{ marginLeft: '-10px' }}>
+            <Grid container>
+              {categories?.map((c) => (
+                <Grid item>
+                  <Box sx={{ margin: "8px" }}>
+                    <Button variant='outlined' color='primary' className={categoryIds.includes(c.categoryId) ? "category-btn active" : "category-btn"} onClick={() => {
+                      addCategoryId(c.categoryId)
+                    }}>{c.categoryName}</Button>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
 
 
           {errors.exampleRequired && <span>This field is required</span>}
 
           <Box sx={{
             textAlign: 'center',
-            marginTop: '20px'
+            marginTop: '50px'
           }}>
             <Button type="submit" variant='outlined' color='primary'>
-              <AddIcon />Створити
+              <AddIcon />Створити подію
             </Button>
           </Box>
         </form>

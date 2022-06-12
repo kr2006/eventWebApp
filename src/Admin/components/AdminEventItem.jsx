@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,14 +6,21 @@ import { Box, Button, Modal, Typography } from '@material-ui/core';
 import { Link, NavLink } from 'react-router-dom';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AuthContext from '../../context/AuthContext';
 
 
 const AdminEventItem = (props) => {
     const navigate = useNavigate();
+    const { token } = useContext(AuthContext);
 
     const deleteEventHandler = () => {
         const url = 'https://localhost:44390/api/Event/' + props.id;
-        const result = axios.delete(url);
+        const result = axios.delete(url, {
+            headers: {
+                Authorization: 'Bearer ' + Object.values({ token })[0]
+            }
+        }
+        );
         navigate('/admin');
     }
 
