@@ -30,7 +30,7 @@ const EventDetails = () => {
 
     return (
         <Box>
-            <Box p={12} sx={{ backgroundColor: '#000' }}>
+            <Box className='my-container' sx={{ backgroundColor: '#000' }}>
                 <Container maxWidth="md">
                     <Box sx={{
                         border: '1px solid #fff',
@@ -53,41 +53,44 @@ const EventDetails = () => {
                     </Grid>
                 </Container>
             </Box>
-            <Box p={12} pb={3}>
+            <Box className='my-container'>
                 <Container maxWidth="md">
                     <Box mb={5}>
                         <Grid container alignItems='center'>
-                            <Box sx={{ marginRight: '20px' }}>
+                            <Box sx={{ marginRight: '20px' }} className='event-details-title'>
                                 <Typography variant='h4'>Підпишись, щоб не забути</Typography>
                             </Box>
-                            <NotificationsActiveOutlinedIcon fontSize='large' />
+                            <Box className='event-details-title'>
+                                <NotificationsActiveOutlinedIcon fontSize='large' />
+                            </Box>
+
                         </Grid>
                     </Box>
                     <Box>
                         <Grid container>
                             <Grid item xs={3}>
-                                <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center' }}>Коли?</Box>
+                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor:'#000', color:'#fff'}}>Коли?</Box>
                                 <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center', borderTop: 'none' }}>{date}</Box>
                             </Grid>
                             <Grid item xs={3}>
-                                <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center' }}>О котрій?</Box>
+                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor:'#000', color:'#fff' }}>О котрій?</Box>
                                 <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center', borderTop: 'none' }}>{time}</Box>
                             </Grid>
                             <Grid item xs={3}>
-                                <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center' }}>Скільки?</Box>
+                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor:'#000', color:'#fff' }}>Скільки?</Box>
                                 <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center', borderTop: 'none' }}>
                                     {(event.price <= 0) ? 'free' : event.price + " UAH"}
                                 </Box>
                             </Grid>
                             <Grid item xs={3}>
-                                <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center' }}>Де?</Box>
+                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor:'#000', color:'#fff' }}>Де?</Box>
                                 <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center', borderTop: 'none' }}>{event.location}</Box>
                             </Grid>
                         </Grid>
                     </Box>
                 </Container>
             </Box>
-            <Box p={12} pb={3}>
+            <Box className='my-container'>
                 <Container maxWidth="md">
                     <Box mb={5}>
                         <Typography variant='h4'>ПРО ПОДІЮ</Typography>

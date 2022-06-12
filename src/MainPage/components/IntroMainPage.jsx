@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 const IntroMainPage = () => {
     return(
-        <Box p={15} sx={{backgroundColor: '#000'}}>
+        <Box p={15} sx={{backgroundColor: '#000'}} className="intro-box">
             <Container maxWidth="md">
                 <Grid container spacing={8} justifyContent='center' alignItems="center">
                     <Grid item>
@@ -16,7 +16,8 @@ const IntroMainPage = () => {
                             width: 150,
                             height: 150, 
                             backgroundColor: '#fff'
-                        }}>
+                        }}
+                        className="intro-main-box">
                             <Typography align='center' variant='h3'>OA</Typography>
                         </Box>
                     </Grid>
@@ -30,7 +31,8 @@ const IntroMainPage = () => {
                                 border: '1px solid #fff',
                                 fontSize: '30px',
                                 width: 'fit-content'
-                            }}>
+                            }}
+                            className="intro-box">
                             ВСІ ПОДІЇ
                         </Box>
                         <Box
@@ -40,7 +42,8 @@ const IntroMainPage = () => {
                                 color: '#fff',
                                 border: '1px solid #fff',
                                 fontSize: '30px'
-                            }}>
+                            }}
+                            className="intro-box">
                             В ОДНОМУ МІСЦІ
                         </Box>
                     </Grid>

@@ -35,7 +35,7 @@ const CategoriesPanel = () => {
     }
 
     return (
-        <Box pt={10} pb={5}>
+        <Box className='my-container'>
             <Container maxWidth='md'>
                 <Box sx={{ marginBottom: '50px' }}>
                     <Button className='btn-add-category' to='/event/create' onClick={(() => setShowForm(!showForm))}>

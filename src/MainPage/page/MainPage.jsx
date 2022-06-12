@@ -9,14 +9,14 @@ import BeNotificated from '../components/BeNotificated';
 
 
 const MainPage = () => {
-    return(
+    return (
         <div>
-        <IntroMainPage />
-        <UpcomingEvents />
-        <Faculties />
-        <AllEventsMainPage />
-        <FilterEventsByDate />
-        <BeNotificated />
+            <IntroMainPage />
+            <UpcomingEvents />
+            <Faculties />
+            <AllEventsMainPage />
+            <FilterEventsByDate />
+            <BeNotificated />
         </div>
     )
 }

@@ -13,9 +13,10 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 
 const EventItem = (props) => {
-    return(
-        <Box sx={{border: '1px solid #000',                 
-                  marginBottom: '50px',
+    return (
+        <Box sx={{
+            border: '1px solid #000',
+            marginBottom: '50px',
         }}>
             <Box sx={{
                 minWidth: '100%',
@@ -26,78 +27,90 @@ const EventItem = (props) => {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 color: '#fff'
-            }}>
+            }} className="event-card">
                 <NavLink to={"/event/details/" + props.id}>
                     <Typography variant='h4' color="secondary">{props.name}</Typography>
                 </NavLink>
-                <NotificationsActiveOutlinedIcon fontSize='large'/>
+                <NotificationsActiveOutlinedIcon fontSize='large' className="upcoming-text-remove"/>
             </Box>
             <Box sx={{
                 padding: '20px 15px',
             }}>
-                <Box sx={{marginBottom: '25px'}}>
+                <Box sx={{ marginBottom: '25px' }}>
                     <Typography variant='body1'>
-                    {props.descr}                    
+                        {props.descr}
                     </Typography>
                 </Box>
                 <Grid container spacing={2}>
                     {
-                        props.eventCategories?.map((category) =>(
+                        props.eventCategories?.map((category) => (
                             <Grid item>
                                 <Typography variant='body2'>#{category.category.categoryName}</Typography>
-                            </Grid>    
+                            </Grid>
                         ))
                     }
                 </Grid>
             </Box>
-            <Box>
+            <Box className='event-card-info'>
                 <Grid container>
                     <Grid item xs={3}>
                         <Box sx={{
                             border: '1px solid #000',
-                            padding: '10px',
+                            padding: '15px 0px 8px',
                             fontSize: '20px',
                             fontWeight: 900,
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            borderBottom: 'none'
                         }}>
-                            <Box component='span' sx={{marginRight: '15px'}}><CalendarTodayIcon /></Box>
-                            {props.date}
+                            <Grid container justifyContent='center'>
+                                <Grid item><CalendarTodayIcon /></Grid>
+                                <Grid item> {props.date}</Grid>
+                            </Grid>
                         </Box>
                     </Grid>
                     <Grid item xs={3}>
                         <Box sx={{
                             border: '1px solid #000',
-                            padding: '10px',
+                            padding: '15px 0px 8px',
                             fontSize: '20px',
                             fontWeight: 900,
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            borderBottom: 'none'
                         }}>
-                            <Box component='span' sx={{marginRight: '15px'}}><AccessTimeIcon /></Box>
-                            {props.time}
+                            <Grid container justifyContent='center'>
+                                <Grid item><AccessTimeIcon /></Grid>
+                                <Grid item> {props.time}</Grid>
+                            </Grid>
                         </Box>
                     </Grid>
                     <Grid item xs={3}>
                         <Box sx={{
                             border: '1px solid #000',
-                            padding: '10px',
+                            padding: '15px 0px 8px',
                             fontSize: '20px',
                             fontWeight: 900,
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            borderBottom: 'none'
                         }}>
-                            <Box component='span' sx={{marginRight: '15px'}}><ConfirmationNumberOutlinedIcon /></Box>
-                            {props.price}
+                            <Grid container justifyContent='center'>
+                                <Grid item><ConfirmationNumberOutlinedIcon /></Grid>
+                                <Grid item> {props.price}</Grid>
+                            </Grid>
                         </Box>
                     </Grid>
                     <Grid item xs={3}>
                         <Box sx={{
                             border: '1px solid #000',
-                            padding: '10px',
+                            padding: '15px 0px 8px',
                             fontSize: '20px',
                             fontWeight: 900,
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            borderBottom: 'none'
                         }}>
-                            <Box component='span' sx={{marginRight: '15px'}}><LocationOnIcon /></Box>
-                            {props.location}
+                            <Grid container justifyContent='center'>
+                                <Grid item><LocationOnIcon /></Grid>
+                                <Grid item> {props.location}</Grid>
+                            </Grid>
                         </Box>
                     </Grid>
                 </Grid>

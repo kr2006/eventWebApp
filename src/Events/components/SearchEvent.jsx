@@ -4,8 +4,6 @@ import { useDebouncedCallback } from 'use-debounce'
 
 import { TextField, Box, Container, FormControl, Grid } from '@material-ui/core';
 
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 const SearchEvent = ({ onSubmit }) => {
 
@@ -18,9 +16,9 @@ const SearchEvent = ({ onSubmit }) => {
     }, 400);
 
     return (
-        <Box p={3} pb={3}>
+        <Box className='my-container' sx={{paddingBottom: '0px'}}>
             <Container maxWidth='md'>
-                <Box mb={5}>
+                <Box >
                     <FormControl fullWidth>
                         <TextField
                             {...register("data")}
@@ -33,7 +31,7 @@ const SearchEvent = ({ onSubmit }) => {
                         />
                     </FormControl>
                 </Box>
-                <Box>
+                {/* <Box>
                     <Grid container justifyContent='space-between' spacing={5}>
                         <Grid item xs={6}>
                             <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -41,7 +39,7 @@ const SearchEvent = ({ onSubmit }) => {
                             </LocalizationProvider>
                         </Grid>
                         <Grid item xs={6}>
-                            {/* <FormControl fullWidth>
+                             <FormControl fullWidth>
                                 <InputLabel variant='outlined' id="demo-simple-select-label">Обрати факультет</InputLabel>
                                 <Select
                                 labelId="demo-simple-select-label"
@@ -58,10 +56,11 @@ const SearchEvent = ({ onSubmit }) => {
                                 <MenuItem value={40}>ГУМ</MenuItem>
                                 <MenuItem value={40}>РГМ</MenuItem>
                                 </Select>
-                            </FormControl>                    */}
+                            </FormControl>                   
                         </Grid>
                     </Grid>
-                </Box>
+                </Box> 
+            */}
             </Container>
         </Box>
     )

@@ -174,3 +174,183 @@ button {
   font-weight: 900;
 }
 
+.filter-event-by-date .MuiMobileStepper-root,
+.filter-event-by-date .MuiPaper-root .MuiSvgIcon-root.MuiSvgIcon-fontSizeLarge {
+  background-color: transparent !important;
+  color: #fff;
+}
+
+.my-container {
+  padding: 60px;
+}
+
+.events-main-page {
+  margin: 0px !important;
+}
+
+
+
+
+
+@media (max-width: 950px) {
+  .MuiGrid-grid-xs-3 {
+    max-width: 50% !important;
+    flex-basis: 50% !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .faculties-container {
+    flex-direction: column !important;
+  }
+
+  .faculties-grid-item,
+  .faculties-grid-item div {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 750px) {
+  .MuiTypography-root.h4.MuiTypography-h4 {
+    font-size: 20px !important;
+  }
+
+  .my-container {
+    padding: 40px;
+  }
+
+  .header-categories {
+    display: none;
+  }
+
+  .intro-main-box,
+  .intro-box {
+    text-align: center;
+    min-width: 350px !important;
+    width: 100% !important;
+  }
+
+  .upcoming-text {
+    font-size: 20px !important;
+  }
+
+  .upcoming-text.title {
+    margin-right: 10px;
+  }
+
+  .upcoming-text-remove {
+    display: none;
+  }
+
+  .upcoming-container {
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  .MuiButton-root.simple-btn {
+    font-size: 20px;
+  }
+
+  .faculties-grid-item div {
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    height: auto !important;
+  }
+
+  .faculties-grid-item div button {
+    color: #fff !important;
+  }
+
+  .faculties-border {
+    border: none !important;
+    padding: 0px !important;
+  }
+
+  .TabsListUnstyled-root.TabsListUnstyled-horizontal button.TabUnstyled-root {
+    padding: 10px;
+    font-size: 15px;
+  }
+}
+
+
+
+@media (max-width: 550px) {
+  .MuiGrid-grid-xs-3 {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+
+  .event-card-info {
+    display: none;
+  }
+
+  .MuiTypography-body1 {
+    font-size: 16px !important;
+    line-height: 25px !important;
+  }
+
+  .MuiTypography-h4 {
+    font-size: 25px !important;
+  }
+
+  .event-card {
+    padding-bottom: 30px !important;
+  }
+
+  .event-details-title {
+    margin-top: 10px;
+  }
+
+  .category-btn {
+    padding: 5px 10px !important;
+  }
+
+  .input-submit {
+    padding: 10px 25px;
+  }
+}
+
+
+@media (max-width: 450px) {
+
+  .my-container {
+    padding: 40px 25px;
+  }
+
+  .header-container {
+    justify-content: center !important;
+  }
+
+  .header-admin {
+    display: none;
+  }
+
+  .intro-main-box,
+  .intro-box {
+    text-align: center;
+    min-width: 300px !important;
+    width: 100% !important;
+    font-size: 20px !important;
+  }
+
+  .TabsUnstyled-root .TabsListUnstyled-root.TabsListUnstyled-horizontal {
+    flex-direction: column !important;
+  }
+
+  .be-notificated-child {
+    width: 30px !important;
+    padding: 10px 0px !important;
+
+  }
+
+  .be-notificated-parent {
+    font-size: 18px !important;
+  }
+
+  .event-card-admin {
+    padding: 10px 8px !important;
+  }
+
+}

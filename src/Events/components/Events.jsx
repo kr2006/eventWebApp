@@ -8,9 +8,9 @@ import EventItem from './EventItem';
 
 const Events = (events) => {
     return(
-        <Box p={12}>
+        <Box className='my-container'>
            <Container maxWidth="md">
-                {events.events.map((event) => (
+                {events.events?.map((event) => (
                     <EventItem 
                         id={event.eventId}
                         name={event.title}

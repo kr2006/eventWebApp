@@ -19,9 +19,7 @@ import { autoPlay } from 'react-swipeable-views-utils';
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const UpcomingEvents = () => {
-    //2022-04-29T18:30:00Z
 
-    //getting and sorting events
     const [upcomingEvents, setUpcomingEvents] = useState([]);
 
     useEffect(() => {
@@ -55,7 +53,7 @@ const UpcomingEvents = () => {
     };
 
     return (
-        <Box p={12}>
+        <Box className="my-container">
             <Container maxWidth="md">
                 <Box align='center'>
                     <Typography variant='h2'>Скоро:</Typography>
@@ -80,15 +78,15 @@ const UpcomingEvents = () => {
                                             width: '100%',
                                         }}
                                     >
-                                        <Grid container justifyContent='space-between'>
+                                        <Grid container justifyContent='space-between'  className="upcoming-container">
                                             <Grid item>
-                                                <Typography variant='h4'>{upcomingEvents[activeStep]?.title}</Typography>
+                                                <Typography variant='h4' className="upcoming-text title">{upcomingEvents[activeStep]?.title}</Typography>
                                             </Grid>
                                             <Grid item>
-                                                <Typography variant='h4'>:</Typography>
+                                                <Typography variant='h4' className="upcoming-text-remove">:</Typography>
                                             </Grid>
                                             <Grid item>
-                                                <Typography variant='h4'>{upcomingEvents[activeStep]?.startAt}</Typography>
+                                                <Typography variant='h4' className="upcoming-text">{upcomingEvents[activeStep]?.startAt}</Typography>
                                             </Grid>
                                         </Grid>
                                     </ Box>

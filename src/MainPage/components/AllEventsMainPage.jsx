@@ -10,11 +10,14 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
+import { NavLink } from 'react-router-dom';
+import MobileStepper from '@material-ui/core/MobileStepper';
 import ArrowBack from '@material-ui/icons/ArrowBack';
 import ArrowForward from '@material-ui/icons/ArrowForward';
-import { NavLink } from 'react-router-dom';
+import SwipeableViews from 'react-swipeable-views';
+import { autoPlay } from 'react-swipeable-views-utils';
 
-
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const AllEventsMainPage = () => {
 
@@ -32,6 +35,22 @@ const AllEventsMainPage = () => {
     }, []);
 
 
+    const [activeStep, setActiveStep] = useState(0);
+    const maxSteps = events?.length;
+
+    const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    };
+
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+
+    const handleStepChange = (step) => {
+        setActiveStep(step);
+    };
+
+
     const myArrow = ({ type, onClick, isEdge }) => {
         const pointer = type === consts.PREV ? <ArrowBack fontSize='large' /> : <ArrowForward fontSize='large' />
         return (
@@ -42,18 +61,22 @@ const AllEventsMainPage = () => {
     }
 
     return (
-        <Box p={12}>
+        <Box className='my-container'>
             <Container maxWidth='md'>
                 <Box align='center'>
                     <Box align='center'>
                         <Typography variant='h2'>всі події:</Typography>
                     </Box>
-                    <Carousel renderArrow={myArrow} itemsToShow={2}>
+                    <AutoPlaySwipeableViews
+                        index={activeStep}
+                        onChangeIndex={handleStepChange}
+                        enableMouseEvents
+                    >
                         {events.map((event, index) => (
                             <Box sx={{
                                 maxWidth: '420px',
                                 mb: 13,
-                            }}>
+                            }} className="events-main-page">
                                 <Box sx={{
                                     p: 3,
                                     backgroundColor: '#000',
@@ -63,7 +86,7 @@ const AllEventsMainPage = () => {
                                     justifyContent: 'center'
                                 }}>
                                     <NavLink to={"event/details/" + events[index].eventId}>
-                                        <Typography color="secondary" variant='h4'>{events[index].title}</Typography>
+                                        <Typography color="secondary" variant='h4' className="h4">{events[index].title}</Typography>
                                     </NavLink>
                                 </Box>
                                 <Box sx={{
@@ -108,7 +131,25 @@ const AllEventsMainPage = () => {
                                 </Grid>
                             </Box>
                         ))}
-                    </Carousel>
+                    </AutoPlaySwipeableViews>
+                    <MobileStepper
+                        position='static'
+                        variant=''
+                        nextButton={
+                            <Button
+                                onClick={handleNext}
+                                disabled={activeStep === maxSteps - 1}
+                            >
+                                <ArrowForward fontSize='large' />
+                            </Button>
+                        }
+                        backButton={
+                            <Button onClick={handleBack} disabled={activeStep === 0}>
+                                <ArrowBack fontSize='large' />
+                            </Button>
+                        }
+                    />
+
                     <Box sx={{ mt: 5 }}>
                         <Button variant="outlined" color="primary"><NavLink to="/events">Переглянути всі події</NavLink></Button>
                     </Box>

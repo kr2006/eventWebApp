@@ -78,7 +78,7 @@ const EditEvent = (props) => {
     }
 
     return (
-        <Box p={12}>
+        <Box className='my-container'>
             <Container maxWidth='md'>
                 <form className='form-create' onSubmit={handleSubmit(onSubmit)}>
                     <FormControl fullWidth>

@@ -13,9 +13,18 @@ const AllEvents = () => {
 
   const [data, setData] = useState([]);
 
+  
+  //get current event
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = data?.slice(indexOfFirstEvent, indexOfLastEvent);
+  //const currentEvents = data;
+
+  const paginateHandler = (pageNumber) => setCurrentPage(pageNumber);
+
   const onSubmit = async (inputValue) => {
     const response = await axios.get(`https://localhost:44390/api/Event/Search?search=${inputValue}`)
-    setData(response.data.data.data)
+    setData(response.data.data.data);
   }
 
   useEffect(() => {
@@ -23,27 +32,18 @@ const AllEvents = () => {
       setData(response.data.reverse());
       console.log(response.data);
     });
-
-   
   }, []);
 
   const sendSearchResult = (data) => {
     setData(data);
   }
 
-  //get current event
-  const indexOfLastEvent = currentPage * eventsPerPage;
-  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-  const currentEvents = data.slice(indexOfFirstEvent, indexOfLastEvent);
-  //const currentEvents = data;
-
-  const paginateHandler = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div>
       <SearchEvent padding="12" onSubmit={onSubmit} />
       <Events events={currentEvents} />
-      <Pagination eventsPerPage={eventsPerPage} totalEvents={data.length} paginateHandler={paginateHandler} currentPage={currentPage} />
+      <Pagination eventsPerPage={eventsPerPage} totalEvents={data?.length} paginateHandler={paginateHandler} currentPage={currentPage} />
       <BeNotificated />
     </div>
   )

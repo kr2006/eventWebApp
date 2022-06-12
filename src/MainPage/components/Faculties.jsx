@@ -17,14 +17,14 @@ const Faculties = () => {
         })
     }
     return (
-        <Box p={12} align='center' sx={{ background: '#000', color: '#fff' }}>
+        <Box align='center' sx={{ background: '#000', color: '#fff' }} className="my-container">
             <Container maxWidth="md">
                 <Box align='center'>
                     <Typography variant='h2'>Переглянь події свого факультету:</Typography>
                 </Box>
                 <Box mb={8}>
-                    <Grid container mb={3}>
-                        <Grid item xs={6}>
+                    <Grid container mb={3} className="faculties-container">
+                        <Grid item xs={6} className="faculties-grid-item">
                             <Box sx={{
                                 background: '#fff',
                                 p: 5,
@@ -48,7 +48,7 @@ const Faculties = () => {
                                 <Button className="simple-btn">Право</Button>
                             </Box>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} className="faculties-grid-item">
                             <Box sx={{
                                 background: '#fff',
                                 p: 5,
@@ -60,8 +60,8 @@ const Faculties = () => {
                             }}>
                                 <Button className="simple-btn">Міжнародні відносини</Button>
                             </Box>
-                            <Grid container>
-                                <Grid item xs={6}>
+                            <Grid container className='faculties-border'>
+                                <Grid item xs={6} className='faculties-border'>
                                     <Box sx={{
                                         background: '#fff',
                                         p: 5,
@@ -74,7 +74,7 @@ const Faculties = () => {
                                         <Button className="simple-btn">ГУМ</Button>
                                     </Box>
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={6} className='faculties-border'>
                                     <Box sx={{
                                         background: '#fff',
                                         p: 5,

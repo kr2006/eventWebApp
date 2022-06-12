@@ -29,7 +29,7 @@ const AdminRegister = () => {
 
 
     return (
-        <Box p={12}>
+        <Box className='my-container'>
             <Container maxWidth='md'>
                 <form onSubmit={handleSubmit(onSubmit)} className="admin-form">
                     <FormControl fullWidth>

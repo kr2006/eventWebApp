@@ -38,7 +38,7 @@ const Header = () => {
     return (
         <Box p={2}>
             <Container maxWidth="md">
-                <Grid container justifyContent='space-between' alignItems='center'>
+                <Grid container justifyContent='space-between' alignItems='center' className="header-container">
                     <Grid item>
                         <Box display="flex" alignItems='center'>
                             <Box component="img" sx={{ width: 38, height: 55 }} src={Logo}></Box>
@@ -51,7 +51,7 @@ const Header = () => {
                             </Box>
                         </Box>
                     </Grid>
-                    <Grid item>
+                    <Grid item className="header-categories">
                         <Box display="flex" alignItems='center'>
                             <Box sx={{ mr: 4 }}>
                                 <Link to='/'>Навчання</Link>
@@ -64,7 +64,7 @@ const Header = () => {
                             </Box>
                         </Box>
                     </Grid>
-                    <Grid item>
+                    <Grid item className="header-admin">
                         {/* <Button
                         >
                             <CalendarTodayIcon />

@@ -16,7 +16,7 @@ export const theme = createTheme({
         fontFamily: '"Aeroport", Open Sans',
         body1: {
             fontSize: 18,
-            lineHeight: '32px'
+            lineHeight: '32px',
         },
         body2: {
             fontSize: 18,
@@ -79,7 +79,7 @@ export const theme = createTheme({
         MuiSvgIcon: {
             root: {
                 display: 'block',
-                marginRight: '10px'
+                marginRight: '7px'
             }
         }
     }

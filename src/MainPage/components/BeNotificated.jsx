@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 
 const BeNotificated = () => {
     return(
-        <Box p={12} align='center'>
+        <Box className='my-container' align='center'>
         <Container maxWidth="md">
             <Box align='center'>
                 <Typography variant='h2'>будь в курсі ВСІХ подій:</Typography>

@@ -40,7 +40,7 @@ const AdminPanel = () => {
 
     return (
         <Box>
-            <Box pt={10} pb={5}>
+            <Box className='my-container' sx={{paddingBottom: '0px'}}>
                 <Container maxWidth='md'>
                     <Box sx={{ marginBottom: '20px' }}>
                         <NavLink className="wide-btn" to='/event/create'>

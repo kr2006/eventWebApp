@@ -51,7 +51,7 @@ const CreateEvent = () => {
               label="Назва події"
               margin="normal"
               defaultValue=""
-              {...register("title", { required: true })}
+              {...register("title", { required: true, maxLength: 20, })}
               sx={{
                 width: '100%'
               }}

@@ -8,15 +8,15 @@ import Typography from '@material-ui/core/Typography';
 
 const Footer = () => {
     return(
-        <Box sx={{backgroundColor: '#000', padding: '70px 0px 40px'}}>
+        <Box sx={{backgroundColor: '#000'}} className="my-container">
         <Container maxWidth="md">
             <Grid container spacing={8} justifyContent='center' alignItems="center">
-                <Grid item>
+                <Grid item className="intro-main-box">
                     <Box sx={{
                         width: 150,
                         height: 150, 
                         backgroundColor: '#fff'
-                    }}>
+                    }}className="intro-main-box">
                         <Typography align='center' variant='h3'>OA</Typography>
                     </Box>
                 </Grid>

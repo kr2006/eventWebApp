@@ -7,7 +7,7 @@ import AdminEventItem from './AdminEventItem';
 
 const AdminEvents = (props) => {  
     return(
-        <Box p={12}>
+        <Box className='my-container'>
             <Container maxWidth="md">
                 {props.events.map((event) => (
                         <AdminEventItem 
