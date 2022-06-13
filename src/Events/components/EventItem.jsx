@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import NotificationsActiveOutlinedIcon from '@material-ui/icons/NotificationsActiveOutlined';
@@ -31,7 +32,12 @@ const EventItem = (props) => {
                 <NavLink to={"/event/details/" + props.id}>
                     <Typography variant='h4' color="secondary">{props.name}</Typography>
                 </NavLink>
-                <NotificationsActiveOutlinedIcon fontSize='large' className="upcoming-text-remove"/>
+                <a href="https://t.me/NotificationsOfBot" className="upcoming-text-remove" >
+                    <Button color="secondary">
+                        <NotificationsActiveOutlinedIcon fontSize='large' />
+                    </Button>
+                </a>
+
             </Box>
             <Box sx={{
                 padding: '20px 15px',

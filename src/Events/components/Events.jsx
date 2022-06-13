@@ -17,7 +17,7 @@ const Events = (events) => {
                         descr={event.description}
                         date={moment(event.startAt).format('DD/MM')}
                         time={moment(event.startAt).format('hh:mm')}
-                        price={(event.price <= 0) ? 'free' : event.price+" UAH"}
+                        price={(event.price <= 0) ? 'Безкоштовно' : event.price+" UAH"}
                         location={event.location}
                         eventCategories={event.eventCategories}
                     />

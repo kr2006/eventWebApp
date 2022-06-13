@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
@@ -10,10 +11,17 @@ import FilterEventsByDate from './FilterEventsByDate';
 
 
 const Faculties = () => {
+
+    const navigate = useNavigate();
+
     const filterEvents = (category) => {
-        console.log(category);
-        const result = axios.get('https://localhost:44390/api/Event/Filter', category).then((response) => {
+        const result = axios.post('https://localhost:44390/api/Event/Filter', { categories: category }).then((response) => {
             console.log(response)
+            navigate('/events', {
+                state: {
+                    category: category
+                }
+            })
         })
     }
     return (
@@ -45,7 +53,7 @@ const Faculties = () => {
                                 fontSize: '40px',
                                 height: '110px'
                             }}>
-                                <Button className="simple-btn">Право</Button>
+                                <Button className="simple-btn" onClick={() => filterEvents(["Право"])}>Право</Button>
                             </Box>
                         </Grid>
                         <Grid item xs={6} className="faculties-grid-item">
@@ -58,7 +66,7 @@ const Faculties = () => {
                                 fontSize: '40px',
                                 height: '110px'
                             }}>
-                                <Button className="simple-btn">Міжнародні відносини</Button>
+                                <Button className="simple-btn" onClick={() => filterEvents(["Міжнародні відносини"])}>Міжнародні відносини</Button>
                             </Box>
                             <Grid container className='faculties-border'>
                                 <Grid item xs={6} className='faculties-border'>
@@ -71,7 +79,7 @@ const Faculties = () => {
                                         fontSize: '40px',
                                         height: '110px'
                                     }}>
-                                        <Button className="simple-btn">ГУМ</Button>
+                                        <Button className="simple-btn" onClick={() => filterEvents(["ГУМ"])}>ГУМ</Button>
                                     </Box>
                                 </Grid>
                                 <Grid item xs={6} className='faculties-border'>
@@ -84,14 +92,18 @@ const Faculties = () => {
                                         fontSize: '40px',
                                         height: '110px'
                                     }}>
-                                        <Button className="simple-btn">РГМ</Button>
+                                        <Button className="simple-btn" onClick={() => filterEvents(["РГМ"])}>РГМ</Button>
                                     </Box>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Box>
-                <Button variant="outlined" color="secondary">підписатись на розсилку </Button>
+                <a href="https://t.me/NotificationsOfBot">
+                    <Button variant="outlined" color="secondary">
+                        підписатись на розсилку
+                    </Button>
+                </a>
             </Container>
         </Box>
     )

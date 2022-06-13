@@ -4,6 +4,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -25,7 +26,8 @@ const EventDetails = () => {
     }, []);
 
     const date = moment(event.startAt).format('DD/MM');
-    const time = moment(event.startAt).format('hh:mm');
+    const time = moment(event.startAt).format('HH:mm');
+    //const time = moment(event.startAt, "hh:mm: A").format('hh:mm');
 
 
     return (
@@ -61,7 +63,11 @@ const EventDetails = () => {
                                 <Typography variant='h4'>Підпишись, щоб не забути</Typography>
                             </Box>
                             <Box className='event-details-title'>
-                                <NotificationsActiveOutlinedIcon fontSize='large' />
+                                <a href="https://t.me/NotificationsOfBot">
+                                    <Button>
+                                        <NotificationsActiveOutlinedIcon fontSize='large' />
+                                    </Button>
+                                </a>
                             </Box>
 
                         </Grid>
@@ -69,21 +75,21 @@ const EventDetails = () => {
                     <Box>
                         <Grid container>
                             <Grid item xs={3}>
-                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor:'#000', color:'#fff'}}>Коли?</Box>
+                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor: '#000', color: '#fff' }}>Коли?</Box>
                                 <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center', borderTop: 'none' }}>{date}</Box>
                             </Grid>
                             <Grid item xs={3}>
-                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor:'#000', color:'#fff' }}>О котрій?</Box>
+                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor: '#000', color: '#fff' }}>О котрій?</Box>
                                 <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center', borderTop: 'none' }}>{time}</Box>
                             </Grid>
                             <Grid item xs={3}>
-                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor:'#000', color:'#fff' }}>Скільки?</Box>
+                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor: '#000', color: '#fff' }}>Скільки?</Box>
                                 <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center', borderTop: 'none' }}>
-                                    {(event.price <= 0) ? 'free' : event.price + " UAH"}
+                                    {(event.price <= 0) ? 'Безкоштовно' : event.price + " UAH"}
                                 </Box>
                             </Grid>
                             <Grid item xs={3}>
-                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor:'#000', color:'#fff' }}>Де?</Box>
+                                <Box sx={{ border: '1px solid #fff', padding: '10px', textAlign: 'center', backgroundColor: '#000', color: '#fff' }}>Де?</Box>
                                 <Box sx={{ border: '1px solid #000', padding: '10px', textAlign: 'center', borderTop: 'none' }}>{event.location}</Box>
                             </Grid>
                         </Grid>

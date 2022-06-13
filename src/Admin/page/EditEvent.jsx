@@ -54,7 +54,6 @@ const EditEvent = (props) => {
         const eventCategories = data?.eventCategories;
             eventCategories?.forEach(item => categoryIds.push(item.categoryId));
             console.log(categoryIds);
-            console.log("hahahahah");
         const categories = axios.get('https://localhost:44390/api/Category').then((response) => {
             setCategories(response.data);
         })

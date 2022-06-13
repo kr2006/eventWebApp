@@ -8,8 +8,6 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
@@ -83,7 +81,9 @@ const Header = () => {
                             <MenuItem onClick={handleDateMenu}>ЦИХ ВИХІДНИХ</MenuItem>
                         </Menu> */}
                         <Button>
-                            <NotificationsActiveOutlinedIcon />
+                            <a href="https://t.me/NotificationsOfBot">
+                                <NotificationsActiveOutlinedIcon />
+                            </a>
                         </Button>
                         {tokens ? (
                             <Button onClick={() => { navigate("/admin") }}>
